@@ -74,8 +74,6 @@ public class Movement : MonoBehaviour
             Invoke(nameof(JumpReset), jumpCooldown);
         }
 
-
-
         moveSpeedMultiplier = sprintInput > 0 ? 2 : 1;
 
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;

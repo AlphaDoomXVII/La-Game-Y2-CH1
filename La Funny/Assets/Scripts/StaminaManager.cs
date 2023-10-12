@@ -10,27 +10,21 @@ public class StaminaManager : MonoBehaviour
 
     [Header("Stamina Bar")]
     public Image staminaBar;
-    public float staminaAmount = 200f;
-    public float staminaRegenSpeed;
+    public float staminaAmount = 250f;
     public float sprintCooldown;
     bool sprintReady;
 
     private Movement Movement;
 
     private void Awake()
-    {
+    { 
         Movement = player.GetComponent<Movement>();
         sprintReady = true;
+        staminaAmount = 250f;
     }
 
     void Update()
     {
-
-        if (Movement.moveSpeedMultiplier > 1)
-        {
-            StaminaDeplete(1);
-        }
-
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             StaminaRegen(2);
@@ -45,8 +39,16 @@ public class StaminaManager : MonoBehaviour
             Movement.moveSpeedMultiplier = 1;
             Invoke(nameof(SprintReset), sprintCooldown);
         }
+    }
 
-        if (staminaAmount < 200 && Movement.moveSpeedMultiplier == 1 && sprintReady == true)
+    private void FixedUpdate()
+    {
+        if (Movement.moveSpeedMultiplier > 1)
+        {
+            StaminaDeplete(1);
+        }
+
+        if (staminaAmount < 250 && Movement.moveSpeedMultiplier == 1 && sprintReady == true)
         {
             StaminaRegen(1);
         }
@@ -55,20 +57,20 @@ public class StaminaManager : MonoBehaviour
     private void StaminaDeplete(float deplete)
     {
         staminaAmount -= deplete;
-        staminaBar.fillAmount = staminaAmount / 200f;
+        staminaBar.fillAmount = staminaAmount / 250f;
     }
 
     private void StaminaRegen(float regen)
     {
         staminaAmount += regen;
-        staminaAmount = Mathf.Clamp(staminaAmount, 0, 200);
+        staminaAmount = Mathf.Clamp(staminaAmount, 0, 250);
 
-        staminaBar.fillAmount = staminaAmount / 200f;
+        staminaBar.fillAmount = staminaAmount / 250f;
     }
 
     private void SprintReset()
     {
         sprintReady = true;
-        staminaAmount = 2;
+        staminaAmount = 1;
     }
 }
