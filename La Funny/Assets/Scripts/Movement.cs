@@ -26,9 +26,9 @@ public class Movement : MonoBehaviour
 
     [Header("Input")]
     public KeyCode jumpInput = KeyCode.Space;
-    float horizontalInput;
-    float verticalInput;
-    float sprintInput;
+    public float horizontalInput;
+    public float verticalInput;
+    public float sprintInput;
 
     Rigidbody rb;
 

@@ -43,7 +43,7 @@ public class StaminaManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Movement.moveSpeedMultiplier > 1)
+        if (Movement.moveSpeedMultiplier > 1 && Movement.verticalInput != 0 | Movement.horizontalInput != 0)
         {
             StaminaDeplete(1);
         }
