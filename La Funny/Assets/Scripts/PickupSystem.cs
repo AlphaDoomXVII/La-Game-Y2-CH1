@@ -3,47 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PickupClass : MonoBehaviour
-
 {
-    [SerializeField] private LayerMask Pickuplayer;
+
+    [SerializeField] private LayerMask PickupMask;
     [SerializeField] private Camera PlayerCamera;
+    [SerializeField] private Transform PickupTarget;
+    [Space]
     [SerializeField] private float PickupRange;
-    [SerializeField] private Transform hand;
+    private Rigidbody CurrentObject;
 
-    private Rigidbody CurrentObjectRigidbody;
-    private Collider CurrentObjectCollider;
-
-    void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            
-        }
-        Ray PickupRay = new Ray(PlayerCamera.transform.position, PlayerCamera.transform.forward);   
-
-        if(Physics.Raycast(PickupRay, out RaycastHit hitInfo, Pickuplayer))
+        if(Input.GetKeyDown(KeyCode.E)) 
         {
 
-                if (CurrentObjectRigidbody)
-                {
-
-                }
-                else
-                {
-                    CurrentObjectRigidbody = hitInfo.rigidbody;
-                    CurrentObjectCollider = hitInfo.collider;
-
-                    CurrentObjectRigidbody.isKinematic = true;
-                    CurrentObjectCollider.enabled = false;
-
+            if(CurrentObject)
+            {
+                CurrentObject.useGravity = true;
+                CurrentObject = null;
+                return;
             }
 
+            Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+            if(Physics.Raycast(CameraRay,out RaycastHit HitInfo, PickupRange, PickupMask))
+            {
+                CurrentObject = HitInfo.rigidbody;
+                CurrentObject.useGravity = false;
+            }
         }
+    }
 
-        if(CurrentObjectRigidbody)
+    private void FixedUpdate()
+    {
+        if (CurrentObject)
         {
-            CurrentObjectRigidbody.position = hand.position;
-            CurrentObjectRigidbody.rotation = hand.rotation;
+            Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
+            float DistanceToPoint = DirectionToPoint.magnitude;
+
+            CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
         }
     }
 }
