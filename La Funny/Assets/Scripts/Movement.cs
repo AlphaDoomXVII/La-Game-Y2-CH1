@@ -74,15 +74,17 @@ public class Movement : MonoBehaviour
             Invoke(nameof(JumpReset), jumpCooldown);
         }
 
+
+
         moveSpeedMultiplier = sprintInput > 0 ? 2 : 1;
 
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (grounded)
-            rb.AddForce(moveDir.normalized * moveSpeed * moveSpeedMultiplier * 10f, ForceMode.Force);
+            rb.AddForce(10f * moveSpeed * moveSpeedMultiplier * moveDir.normalized, ForceMode.Force);
 
         else if (!grounded)
-            rb.AddForce(moveDir.normalized * moveSpeed * moveSpeedAir * 10f, ForceMode.Force);
+            rb.AddForce(10f * moveSpeed * moveSpeedAir * moveDir.normalized, ForceMode.Force);
 
     }
 
