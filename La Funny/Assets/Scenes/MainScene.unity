@@ -1163,9 +1163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 595140495}
   staminaBar: {fileID: 1209410469}
-  staminaAmount: 100
+  staminaAmount: 200
   staminaRegenSpeed: 0
-  sprintCooldown: 0.5
+  sprintCooldown: 2
 --- !u!1 &1966099792
 GameObject:
   m_ObjectHideFlags: 0
