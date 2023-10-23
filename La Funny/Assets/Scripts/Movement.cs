@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         jumpReady = true;
+        moveSpeedMultiplier = 1;
     }
     private void Update()
     {
@@ -75,8 +76,6 @@ public class Movement : MonoBehaviour
 
             Invoke(nameof(JumpReset), jumpCooldown);
         }
-
-        moveSpeedMultiplier = sprintInput > 0 ? 2 : 1;
 
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 

@@ -40,9 +40,14 @@ public class StaminaManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Movement.moveSpeedMultiplier > 1 && Movement.verticalInput != 0 | Movement.horizontalInput != 0)
+        if (Movement.sprintInput > 0 && Movement.verticalInput != 0 | Movement.horizontalInput != 0)
         {
             StaminaDeplete(1);
+            Movement.moveSpeedMultiplier = 2;
+        }
+        else
+        {
+            Movement.moveSpeedMultiplier = 1;
         }
 
         if (staminaAmount < 250 && Movement.moveSpeedMultiplier == 1 && sprintReady == true)
