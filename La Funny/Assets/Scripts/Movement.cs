@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
 
         if (sprintInput > 0 && grounded)
             rb.drag = groundDrag * moveSpeedMultiplier;
-        else if (grounded)
+        if (grounded)
             rb.drag = groundDrag;
         else
             rb.drag = 3;

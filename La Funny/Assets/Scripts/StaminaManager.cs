@@ -9,6 +9,7 @@ public class StaminaManager : MonoBehaviour
     public GameObject player;
 
     [Header("Stamina Bar")]
+    public Image regenEffect;
     public Image staminaBar;
     public float staminaAmount = 250f;
     public float sprintCooldown;
@@ -21,15 +22,11 @@ public class StaminaManager : MonoBehaviour
         Movement = player.GetComponent<Movement>();
         sprintReady = true;
         staminaAmount = 250f;
+        regenEffect.enabled = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            StaminaRegen(2);
-        }
-
         if (staminaAmount <= 0)
         {
             sprintReady = false;
@@ -51,6 +48,12 @@ public class StaminaManager : MonoBehaviour
         if (staminaAmount < 250 && Movement.moveSpeedMultiplier == 1 && sprintReady == true)
         {
             StaminaRegen(1);
+            regenEffect.enabled = true;
+        }
+
+        if (staminaAmount == 250 | Movement.moveSpeedMultiplier > 1)
+        {
+            regenEffect.enabled = false;
         }
     }
 
