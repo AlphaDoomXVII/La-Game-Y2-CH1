@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 595140498}
   - component: {fileID: 595140497}
   - component: {fileID: 595140499}
+  - component: {fileID: 595140500}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -601,6 +602,24 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   sprintInput: 0
+--- !u!114 &595140500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595140495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284e8c7f98ecbbc49b035c5b16fd6d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1342686111}
+  playerObj: {fileID: 629529492}
+  maxSlideTime: 0.75
+  slideForce: 200
+  slideYScale: 0.5
+  slideKey: 306
 --- !u!1 &629529488
 GameObject:
   m_ObjectHideFlags: 0
