@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
@@ -14,6 +16,11 @@ public class HealthManager : MonoBehaviour
 
     private void Update()
     {
+        if (healthAmount <= 0)
+        {
+            SceneManager.LoadScene("MainScene");
+        }
+
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             HealthDeplete(20);
