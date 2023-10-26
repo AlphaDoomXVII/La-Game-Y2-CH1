@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 620997508}
   - component: {fileID: 620997507}
   - component: {fileID: 620997506}
+  - component: {fileID: 620997509}
   m_Layer: 0
   m_Name: ScriptManager
   m_TagString: Untagged
@@ -623,7 +624,6 @@ MonoBehaviour:
   regenEffect: {fileID: 985795129}
   healthBar: {fileID: 1556276175}
   healthAmount: 250
-  deathScreen: {fileID: 1780908590}
 --- !u!4 &620997508
 Transform:
   m_ObjectHideFlags: 0
@@ -639,6 +639,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620997509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620997505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a64c292a22392047a63ef55fbd0204f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 595140495}
+  health: {fileID: 1909807656}
+  stamina: {fileID: 919434804}
+  mainCamera: {fileID: 963194225}
+  deathScreen: {fileID: 1780908590}
 --- !u!1 &629529488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,8 +1798,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 919434805}
   - {fileID: 1909807657}
+  - {fileID: 919434805}
   - {fileID: 1886918922}
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

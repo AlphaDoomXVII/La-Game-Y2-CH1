@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class StaminaManager : MonoBehaviour
 {
+    [Header("Game Objects")]
     public GameObject player;
 
     [Header("Stamina Bar")]
@@ -15,11 +16,11 @@ public class StaminaManager : MonoBehaviour
     public float sprintCooldown;
     bool sprintReady;
 
-    private MovementSystem Movement;
+    private MovementSystem movementSystem;
 
     private void Awake()
     { 
-        Movement = player.GetComponent<MovementSystem>();
+        movementSystem = player.GetComponent<MovementSystem>();
         sprintReady = true;
         staminaAmount = 250f;
         regenEffect.enabled = false;
@@ -33,30 +34,30 @@ public class StaminaManager : MonoBehaviour
 
             staminaAmount = 0;
 
-            Movement.moveSpeedMultiplier = 1;
+            movementSystem.moveSpeedMultiplier = 1;
             Invoke(nameof(SprintReset), sprintCooldown);
         }
     }
 
     private void FixedUpdate()
     {
-        if (Movement.sprintInput > 0 && Movement.verticalInput != 0 | Movement.horizontalInput != 0)
+        if (movementSystem.sprintInput > 0 && movementSystem.verticalInput != 0 | movementSystem.horizontalInput != 0)
         {
             StaminaDeplete(1);
-            Movement.moveSpeedMultiplier = 2;
+            movementSystem.moveSpeedMultiplier = 2;
         }
         else
         {
-            Movement.moveSpeedMultiplier = 1;
+            movementSystem.moveSpeedMultiplier = 1;
         }
 
-        if (staminaAmount < 250 && Movement.moveSpeedMultiplier == 1 && sprintReady == true)
+        if (staminaAmount < 250 && movementSystem.moveSpeedMultiplier == 1 && sprintReady == true)
         {
             StaminaRegen(1);
             regenEffect.enabled = true;
         }
 
-        if (staminaAmount == 250 | Movement.moveSpeedMultiplier > 1)
+        if (staminaAmount == 250 | movementSystem.moveSpeedMultiplier > 1)
         {
             regenEffect.enabled = false;
         }

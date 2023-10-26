@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
+    [Header("Game Objects")]
     public GameObject player;
 
     [Header("Health Bar")]
@@ -15,20 +16,13 @@ public class HealthManager : MonoBehaviour
     public Image healthBar;
     public float healthAmount = 250f;
 
-    [Header("Death Screen")]
-    public Image deathScreen;
-
     private void Awake()
     {
-        deathScreen.enabled = false;
+        
     }
 
     private void Update()
     {
-        if (healthAmount <= 0)
-        {
-            deathScreen.enabled = true;
-        }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
