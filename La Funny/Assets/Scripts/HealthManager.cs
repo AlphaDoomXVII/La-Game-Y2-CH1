@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,16 +10,24 @@ public class HealthManager : MonoBehaviour
 {
     public GameObject player;
 
-    [Header("Stamina Bar")]
+    [Header("Health Bar")]
     public Image regenEffect;
     public Image healthBar;
     public float healthAmount = 250f;
+
+    [Header("Death Screen")]
+    public Image deathScreen;
+
+    private void Awake()
+    {
+        deathScreen.enabled = false;
+    }
 
     private void Update()
     {
         if (healthAmount <= 0)
         {
-            SceneManager.LoadScene("MainScene");
+            deathScreen.enabled = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
