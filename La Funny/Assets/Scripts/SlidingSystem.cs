@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sliding : MonoBehaviour
+public class SlidingSystem : MonoBehaviour
 {
     [Header("References")]
     public Transform orientation;
     public Transform playerObj;
     private Rigidbody rb;
-    private Movement pm;
+    private MovementSystem pm;
 
 
     [Header("Sliding")]
@@ -32,7 +32,7 @@ public class Sliding : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pm = GetComponent<Movement>();
+        pm = GetComponent<MovementSystem>();
 
         startYScale = playerObj.localScale.y;
     }

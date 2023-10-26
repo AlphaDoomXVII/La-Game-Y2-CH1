@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 620997507}
   - component: {fileID: 620997506}
   m_Layer: 0
-  m_Name: StatsManager
+  m_Name: ScriptManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

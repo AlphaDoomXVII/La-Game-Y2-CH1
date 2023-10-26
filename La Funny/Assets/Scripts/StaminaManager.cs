@@ -15,11 +15,11 @@ public class StaminaManager : MonoBehaviour
     public float sprintCooldown;
     bool sprintReady;
 
-    private Movement Movement;
+    private MovementSystem Movement;
 
     private void Awake()
     { 
-        Movement = player.GetComponent<Movement>();
+        Movement = player.GetComponent<MovementSystem>();
         sprintReady = true;
         staminaAmount = 250f;
         regenEffect.enabled = false;
