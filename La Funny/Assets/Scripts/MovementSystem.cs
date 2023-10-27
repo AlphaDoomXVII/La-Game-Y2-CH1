@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MovementSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] 
+    private GameObject player;
 
     [Header("Movement ground")]
     public float moveSpeed;
