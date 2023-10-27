@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlidingSystem : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Game Objects")]
     public Transform orientation;
     public Transform playerObj;
     private Rigidbody rb;
