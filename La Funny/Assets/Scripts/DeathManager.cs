@@ -26,7 +26,7 @@ public class DeathManager : MonoBehaviour
     private MovementSystem movementSystem;
     private CameraMovement cameraMovement;
 
-    public bool hasRun = false;
+    private bool hasRun = false;
     
 
     private void Awake()
