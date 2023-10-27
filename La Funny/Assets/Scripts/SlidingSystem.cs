@@ -8,7 +8,7 @@ public class SlidingSystem : MonoBehaviour
     public Transform orientation;
     public Transform playerObj;
     private Rigidbody rb;
-    private MovementSystem pm;
+    private MovementSystem ms;
 
 
     [Header("Sliding")]
@@ -21,7 +21,7 @@ public class SlidingSystem : MonoBehaviour
 
 
     [Header("Input")]
-    public KeyCode slideKey = KeyCode.LeftControl;
+    public KeyCode slideKey = KeyCode.C;
     private float horizontalInput;
     private float verticalInput;
 
@@ -32,7 +32,7 @@ public class SlidingSystem : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pm = GetComponent<MovementSystem>();
+        ms = GetComponent<MovementSystem>();
 
         startYScale = playerObj.localScale.y;
     }
@@ -42,7 +42,7 @@ public class SlidingSystem : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0))
+        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 | verticalInput != 0 && ms.moveSpeedMultiplier == 2))
             StartSlide();
         if (Input.GetKeyUp(slideKey) && sliding)
             StopSlide();
