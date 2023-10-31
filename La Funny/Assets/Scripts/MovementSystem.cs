@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class MovementSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] 
+    private GameObject player;
 
     [Header("Movement ground")]
     public float moveSpeed;
@@ -19,12 +20,18 @@ public class Movement : MonoBehaviour
 
     Vector3 moveDir;
 
-    [Header("Movement jump")]
+    [Header("Jumping")]
     public float jumpForce;
     public float jumpCooldown;
     bool jumpReady;
 
+    [Header("Crouching")]
+    public float crouchSpeed;
+    public float crouchYScale;
+    public float startYScale;
+
     [Header("Input")]
+    public KeyCode crouchInput = KeyCode.C;
     public KeyCode jumpInput = KeyCode.Space;
     public float horizontalInput;
     public float verticalInput;
@@ -67,6 +74,16 @@ public class Movement : MonoBehaviour
     }
     private void MovePlayer()
     {
+        if (Input.GetKeyDown(crouchInput) && moveSpeedMultiplier == 1) 
+        {
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        }
+
+        if (Input.GetKeyUp(crouchInput))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+        }
 
         if (Input.GetKey(jumpInput) && jumpReady && grounded)
         {

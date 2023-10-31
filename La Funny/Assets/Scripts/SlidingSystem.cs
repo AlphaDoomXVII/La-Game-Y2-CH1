@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sliding : MonoBehaviour
+public class SlidingSystem : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Game Objects")]
     public Transform orientation;
     public Transform playerObj;
     private Rigidbody rb;
-    private Movement pm;
+    private MovementSystem ms;
 
 
     [Header("Sliding")]
@@ -21,7 +21,7 @@ public class Sliding : MonoBehaviour
 
 
     [Header("Input")]
-    public KeyCode slideKey = KeyCode.LeftControl;
+    public KeyCode slideKey = KeyCode.C;
     private float horizontalInput;
     private float verticalInput;
 
@@ -32,7 +32,7 @@ public class Sliding : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pm = GetComponent<Movement>();
+        ms = GetComponent<MovementSystem>();
 
         startYScale = playerObj.localScale.y;
     }
@@ -42,7 +42,7 @@ public class Sliding : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0))
+        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 | verticalInput != 0 && ms.moveSpeedMultiplier == 2))
             StartSlide();
         if (Input.GetKeyUp(slideKey) && sliding)
             StopSlide();

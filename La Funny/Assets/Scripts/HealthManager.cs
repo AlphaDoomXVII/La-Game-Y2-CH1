@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,19 +8,21 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
+    [Header("Game Objects")]
     public GameObject player;
 
-    [Header("Stamina Bar")]
+    [Header("Health Bar")]
     public Image regenEffect;
     public Image healthBar;
     public float healthAmount = 250f;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Update()
     {
-        if (healthAmount <= 0)
-        {
-            SceneManager.LoadScene("MainScene");
-        }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
