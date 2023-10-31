@@ -13,6 +13,9 @@ public class PickupClass : MonoBehaviour
     private bool canPickup;
     private bool isPickup;
 
+    [Header("Input")]
+    public KeyCode pickupinput;
+
     private void Start()
     {
 
@@ -21,11 +24,19 @@ public class PickupClass : MonoBehaviour
 
     void Update()
     {
-        Physics.Raycast(playerCamera.position, playerCamera.forward * 4f);
+        if (canPickup == true)
+        {
+            if (Input.GetKey(pickupinput)) 
+            {
+                isPickup = true;
+
+            }
+        }
     }
 
     void FixedUpdate()
     {
         Debug.DrawRay(playerCamera.position, playerCamera.forward * 4f, Color.red, 10);
+        canPickup = Physics.Raycast(playerCamera.position, playerCamera.forward * 4f, pickupObj);
     } 
 }
