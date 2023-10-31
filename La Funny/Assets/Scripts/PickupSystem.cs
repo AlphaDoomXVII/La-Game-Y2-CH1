@@ -11,6 +11,7 @@ public class PickupClass : MonoBehaviour
     [Space]
     [SerializeField] private float PickupRange;
     private Rigidbody CurrentObject;
+
     private void Start()
     { PlayerCamera = GetComponent<Camera>(); }
 
@@ -31,21 +32,13 @@ public class PickupClass : MonoBehaviour
             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
             {
                 CurrentObject = HitInfo.rigidbody;
-                CurrentObject.useGravity = true;
+                CurrentObject.useGravity = false;
             }
         }
     }
 
-    private void FixedUpdate()
+   void FixedUpdate()
     {
-        if (CurrentObject)
-        {
-            Debug.Log("Bugg");
-            Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.transform.forward;
-            float DistanceToPoint = DirectionToPoint.magnitude;
-
-            DirectionToPoint = PickupTarget.position;
-
-        }
+        
     }
 }
