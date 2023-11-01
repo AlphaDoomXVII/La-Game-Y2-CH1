@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class ObjectPickup : MonoBehaviour
 {
+    public GameObject Camera;
     public Transform playerCamera;
     public bool isPickedUp;
+
+    private void Start()
+    {
+        Camera = GameObject.FindWithTag("MainCamera");
+        playerCamera = Camera.transform;
+    }
 
     private void Update()
     {

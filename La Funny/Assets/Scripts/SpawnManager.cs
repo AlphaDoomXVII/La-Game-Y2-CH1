@@ -5,11 +5,13 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public Transform spawnPoint;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity, spawnPoint.parent);
         }
     }
 }

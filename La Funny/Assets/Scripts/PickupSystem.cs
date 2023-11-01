@@ -10,9 +10,6 @@ public class PickupClass : MonoBehaviour
     private ObjectPickup currentObj;
     Rigidbody currentObjRB;
 
-    [Header("Bools")]
-    private bool canPickup;
-
     [Header("Input")]
     public KeyCode pickupInput;
 

@@ -315,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 245274537}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.058716, y: 3.3240967, z: -2.4745502}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -646,6 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319520fc4cc093478783fecf651d581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 0}
   playerCamera: {fileID: 963194228}
   isPickedUp: 0
 --- !u!1 &562352667
@@ -694,8 +695,8 @@ GameObject:
   m_Component:
   - component: {fileID: 595140498}
   - component: {fileID: 595140497}
-  - component: {fileID: 595140499}
-  - component: {fileID: 595140500}
+  - component: {fileID: 595140503}
+  - component: {fileID: 595140502}
   - component: {fileID: 595140501}
   m_Layer: 0
   m_Name: Player
@@ -740,7 +741,7 @@ Transform:
   m_GameObject: {fileID: 595140495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.99, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -748,56 +749,6 @@ Transform:
   - {fileID: 1342686111}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &595140499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595140495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3737b40a437347408a9f08fdc9cced2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 629529488}
-  moveSpeed: 7
-  moveSpeedMultiplier: 0
-  moveSpeedAir: 0.4
-  groundDrag: 5
-  playerHeight: 2
-  Ground:
-    serializedVersion: 2
-    m_Bits: 1024
-  orientation: {fileID: 1342686111}
-  jumpForce: 12
-  jumpCooldown: 0.25
-  crouchSpeed: 0.5
-  crouchYScale: 0.5
-  startYScale: 1
-  crouchInput: 99
-  jumpInput: 32
-  horizontalInput: 0
-  verticalInput: 0
-  sprintInput: 0
---- !u!114 &595140500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595140495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284e8c7f98ecbbc49b035c5b16fd6d59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orientation: {fileID: 1342686111}
-  playerObj: {fileID: 629529492}
-  maxSlideTime: 0.75
-  slideForce: 200
-  slideYScale: 0.5
-  slideKey: 99
 --- !u!114 &595140501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,6 +763,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 963194228}
   pickupInput: 101
+--- !u!114 &595140502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595140495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284e8c7f98ecbbc49b035c5b16fd6d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1342686111}
+  playerObj: {fileID: 629529492}
+  maxSlideTime: 0.75
+  slideForce: 2
+  slideYScale: 0.5
+  slideKey: 99
+--- !u!114 &595140503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595140495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3737b40a437347408a9f08fdc9cced2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  moveSpeed: 7
+  moveSpeedMultiplier: 0
+  moveSpeedAir: 0.4
+  groundDrag: 3
+  playerHeight: 2
+  Ground:
+    serializedVersion: 2
+    m_Bits: 1024
+  orientation: {fileID: 1342686111}
+  jumpForce: 2
+  jumpCooldown: 0.5
+  crouchSpeed: 0.5
+  crouchYScale: 0.5
+  startYScale: 1
+  crouchInput: 99
+  jumpInput: 32
+  horizontalInput: 0
+  verticalInput: 0
+  sprintInput: 0
 --- !u!1 &620997505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 667899291}
   m_Layer: 0
-  m_Name: NpcManager
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1107,7 +1108,7 @@ Transform:
   m_GameObject: {fileID: 667899290}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 38.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1495,7 +1496,7 @@ GameObject:
   - component: {fileID: 992126273}
   - component: {fileID: 992126274}
   m_Layer: 0
-  m_Name: NPC's
+  m_Name: NpcManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1530,6 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7470780374807451185, guid: 81bc69ba7a808c9489be1f17f7750dbc, type: 3}
+  spawnPoint: {fileID: 667899291}
 --- !u!1 &1097608433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,7 +2960,7 @@ Transform:
   m_GameObject: {fileID: 1966099792}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.058736, y: 0, z: 2.4745502}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 500, y: 0.3, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5177,7 +5179,7 @@ SceneRoots:
   - {fileID: 595140498}
   - {fileID: 1651387841}
   - {fileID: 635329795}
-  - {fileID: 992126273}
   - {fileID: 245274538}
   - {fileID: 620997508}
+  - {fileID: 992126273}
   - {fileID: 4172866518479388776}
