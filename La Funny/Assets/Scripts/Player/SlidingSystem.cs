@@ -42,7 +42,7 @@ public class SlidingSystem : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 | verticalInput != 0 && ms.moveSpeedMultiplier == 2))
+        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 | verticalInput != 0 && ms.moveSpeedMultiplier > 1))
             StartSlide();
         if (Input.GetKeyUp(slideKey) && sliding)
             StopSlide();
