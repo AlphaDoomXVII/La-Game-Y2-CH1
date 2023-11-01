@@ -7,36 +7,39 @@ public class PickupClass : MonoBehaviour
 {
     [Header("Game Objects")]
     public Transform playerCamera;
-    public LayerMask pickupObj;
+    private ObjectPickup currentObj;
+    Rigidbody currentObjRB;
 
     [Header("Bools")]
     private bool canPickup;
-    private bool isPickup;
 
     [Header("Input")]
-    public KeyCode pickupinput;
-
-    private void Start()
-    {
-
-    }
-
+    public KeyCode pickupInput;
 
     void Update()
     {
-        if (canPickup == true)
+        if (Input.GetKeyDown(pickupInput) && Physics.Raycast(playerCamera.position, playerCamera.forward * 5f, out RaycastHit hitInfo))
         {
-            if (Input.GetKey(pickupinput)) 
-            {
-                isPickup = true;
+            currentObj = hitInfo.transform.GetComponent<ObjectPickup>();
+            currentObj.transform.position = playerCamera.position + playerCamera.forward  * 3f;
+            currentObj.isPickedUp = true;
 
-            }
+            currentObjRB = hitInfo.rigidbody.GetComponent<Rigidbody>();
+            currentObjRB.useGravity = false;
+        }
+
+        if (Input.GetKeyUp(pickupInput) && currentObj != null)
+        {
+            currentObj.isPickedUp = false;
+            currentObj = null;
+
+            currentObjRB.useGravity = true;
         }
     }
 
     void FixedUpdate()
     {
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * 4f, Color.red, 10);
-        canPickup = Physics.Raycast(playerCamera.position, playerCamera.forward * 4f, pickupObj);
-    } 
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * 5f, Color.red, 10);
+        canPickup = Physics.Raycast(playerCamera.position, playerCamera.forward * 5f);
+    }
 }
