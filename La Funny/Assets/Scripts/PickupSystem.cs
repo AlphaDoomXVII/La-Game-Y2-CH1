@@ -18,7 +18,9 @@ public class PickupClass : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(pickupInput) && Physics.Raycast(playerCamera.position, playerCamera.forward * 5f, out RaycastHit hitInfo))
+        Physics.Raycast(playerCamera.position, playerCamera.forward * 5f, out RaycastHit hitInfo);
+
+        if (Input.GetKeyDown(pickupInput) && hitInfo.transform.GetComponent<ObjectPickup>() != null)
         {
             currentObj = hitInfo.transform.GetComponent<ObjectPickup>();
             currentObj.isPickedUp = true;
@@ -26,6 +28,7 @@ public class PickupClass : MonoBehaviour
             currentObjRB = hitInfo.rigidbody.GetComponent<Rigidbody>();
             currentObjRB.useGravity = false;
         }
+        
 
         if (Input.GetKeyUp(pickupInput) && currentObj != null)
         {
@@ -39,6 +42,5 @@ public class PickupClass : MonoBehaviour
     void FixedUpdate()
     {
         Debug.DrawRay(playerCamera.position, playerCamera.forward * 5f, Color.red, 10);
-        canPickup = Physics.Raycast(playerCamera.position, playerCamera.forward * 5f);
     }
 }
