@@ -21,7 +21,6 @@ public class PickupClass : MonoBehaviour
         if (Input.GetKeyDown(pickupInput) && Physics.Raycast(playerCamera.position, playerCamera.forward * 5f, out RaycastHit hitInfo))
         {
             currentObj = hitInfo.transform.GetComponent<ObjectPickup>();
-            currentObj.transform.position = playerCamera.position + playerCamera.forward  * 3f;
             currentObj.isPickedUp = true;
 
             currentObjRB = hitInfo.rigidbody.GetComponent<Rigidbody>();

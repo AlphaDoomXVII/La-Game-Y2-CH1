@@ -15,7 +15,7 @@ public class ObjectPickup : MonoBehaviour
 
     private void PickedUp()
     {
-        Vector3 resultingPosition = transform.position;
+        Vector3 resultingPosition = playerCamera.position + playerCamera.forward * 5f;
         transform.position = resultingPosition;
     }
 }
