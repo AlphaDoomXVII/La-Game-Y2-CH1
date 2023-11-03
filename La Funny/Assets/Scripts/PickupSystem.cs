@@ -26,7 +26,6 @@ public class PickupClass : MonoBehaviour
             currentObjRB.useGravity = false;
         }
         
-
         if (Input.GetKeyUp(pickupInput) && currentObj != null)
         {
             currentObj.isPickedUp = false;
@@ -34,10 +33,5 @@ public class PickupClass : MonoBehaviour
 
             currentObjRB.useGravity = true;
         }
-    }
-
-    void FixedUpdate()
-    {
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * 5f, Color.red, 10);
     }
 }

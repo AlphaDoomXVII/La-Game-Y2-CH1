@@ -10,6 +10,11 @@ public class NPCManager : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask ground, playerLayer;
+    private GameObject scriptManager;
+    private readonly HealthManager healthManager;
+
+    [Header("Entity Health")]
+    public float health;
 
     [Header("Walking")]
     public Vector3 walkPoint;
@@ -19,6 +24,7 @@ public class NPCManager : MonoBehaviour
     [Header("Attack")]
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    public float damage;
 
     [Header("Range")]
     public float sightRange, attackRange;
@@ -27,6 +33,7 @@ public class NPCManager : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
+        scriptManager = GameObject.Find("ScriptManager");
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -38,6 +45,11 @@ public class NPCManager : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Passive();
         if (playerInSightRange && !playerInAttackRange) Chase();
         if (playerInSightRange && playerInAttackRange) Attack();
+
+        if (health <= 0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Passive()
@@ -76,6 +88,9 @@ public class NPCManager : MonoBehaviour
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
+            if (scriptManager.TryGetComponent<HealthManager>(out HealthManager healthManager))
+                healthManager.HealthDeplete(damage);
+
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

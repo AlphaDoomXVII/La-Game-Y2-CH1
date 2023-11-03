@@ -16,11 +16,6 @@ public class HealthManager : MonoBehaviour
     public Image healthBar;
     public float healthAmount = 250f;
 
-    private void Awake()
-    {
-        
-    }
-
     private void Update()
     {
 
@@ -35,7 +30,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    private void HealthDeplete(float deplete)
+    public void HealthDeplete(float deplete)
     {
         healthAmount -= deplete;
         healthBar.fillAmount = healthAmount / 250f;
