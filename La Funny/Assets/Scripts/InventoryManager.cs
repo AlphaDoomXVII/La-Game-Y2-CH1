@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class InventoryManager : MonoBehaviour
 {
-    public List<Item> inventory = new List<Item>();
+    public List<Item> inventory = new();
 
     // Add an item to the inventory
     public void AddItem(Item item)

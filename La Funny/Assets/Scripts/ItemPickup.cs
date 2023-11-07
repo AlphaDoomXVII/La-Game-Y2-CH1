@@ -7,16 +7,14 @@ public class ItemPickup : MonoBehaviour
 {
     public Item Item;
 
-    void Pickup()
+
+    private void Update()
     {
-       
+        
     }
 
-
-
-    private void OnMouseDown()
+    private void Pickup()
     {
-        Pickup();   
-    }
-      
+
+    } 
 }
