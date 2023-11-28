@@ -5,16 +5,9 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public Item Item;
+    public Item item;
 
+    
 
-    private void Update()
-    {
-        
-    }
-
-    private void Pickup()
-    {
-
-    } 
+    
 }

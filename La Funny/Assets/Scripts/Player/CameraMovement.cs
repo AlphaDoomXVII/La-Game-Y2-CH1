@@ -5,6 +5,10 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Transform player;
+    public Transform playerCamera; 
+
+    public RaycastHit lookingAt;
+    
 
     [Header("Camera movement")]
     public float mouseSensitivity = 2f;
@@ -26,5 +30,8 @@ public class CameraMovement : MonoBehaviour
         transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
 
         player.Rotate(Vector3.up * inputX);
+
+        Physics.Raycast(playerCamera.position, playerCamera.forward * 5f, out lookingAt);
+        Debug.Log(lookingAt);
     }
 }

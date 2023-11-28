@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity, spawnPoint.parent);
         }
