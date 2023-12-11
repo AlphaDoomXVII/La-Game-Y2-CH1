@@ -32,6 +32,5 @@ public class CameraMovement : MonoBehaviour
         player.Rotate(Vector3.up * inputX);
 
         Physics.Raycast(playerCamera.position, playerCamera.forward * 5f, out lookingAt);
-        Debug.Log(lookingAt);
     }
 }
